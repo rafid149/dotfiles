@@ -1,0 +1,32 @@
+\tcbtealtheorem{claim}{Claim}{}
+\tcbblacktheorem{remark}{Remark}{}
+\tcbsteeltheorem{problem}{Problem}{}
+\tcborangetheorem{example}{Example}{}
+\declaretheoremstyle[
+	headfont=\color{Teal!85!black}\bfseries,
+	bodyfont=\itshape,
+	% skipabove=80pt,
+]{definition}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[]
+\declaretheoremstyle[
+headfont=\color{RoyalBlue!85!black}\bfseries\sffamily,
+]{solution}
+\theoremstyle{solution}
+\newtheorem{solution}{Solution}[]
+\newtheorem*{solution*}{Solution}
+
+
+\NewDocumentEnvironment{prob}{o}{
+  \IfNoValueTF{#1}{
+  }{
+    \setcounter{problem}{#1}
+    \addtocounter{problem}{-1}
+  }
+\begin{problem}
+}{\end{problem}}
+
+
+\begin{asydef}
+size(7cm);  
+\end{asydef}
