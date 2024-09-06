@@ -1,0 +1,397 @@
+%--------------------Page Layouts--------------------%
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\textwidth}{6.3in}
+\setlength{\textheight}{9in}
+\setlength{\headwidth}{6.3in}
+\setlength{\voffset}{-0.5in}
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+\setlength{\hoffset}{-3pt}
+\usepackage{layout}
+%--------------------------x-------------------------%
+
+
+
+
+
+
+
+
+
+%--------------------Fancy Headers-------------------%
+\makepagestyle{mystyle}
+% \makeevenhead{mystyle}{}{}{\thepage}
+\renewcommand{\sectionmark}[1]{\markright{\sffamily\emph{\thesection\  #1}}}
+\makeoddhead{mystyle}{\rightmark}{}{\thepage}
+\makeevenfoot{mystyle}{}{}{}
+\makeoddfoot{mystyle}{}{}{}
+\makepsmarks{mystyle}{%
+	\createmark{chapter}{left}{nonumber}{}{}}
+\pagestyle{mystyle}
+%--------------------------x-------------------------%
+
+
+
+
+
+
+
+
+%---------------------Fancy Titles--------------------%
+% chapter styling
+\makechapterstyle{mychapter}{%
+	\renewcommand{\chapnumfont}{\normalfont\Huge\bfseries\sffamily}
+	\renewcommand{\printchaptername}{\chapnumfont \@chapapp}
+	\renewcommand{\printchapternum}{\chapnumfont \thechapter}
+	\renewcommand\printchaptertitle{\chapnumfont}
+}
+\chapterstyle{mychapter}
+% \setsecindent{}
+
+
+% section styling
+\setsecheadstyle{\bfseries\sffamily\LARGE}
+
+\setsecnumformat{\thesection\ }
+
+% fancy maketitles
+\newcommand{\country}[1]{\def\mycountry{#1}}
+\newcommand{\user}[1]{\def\myuserid{#1}}
+\renewcommand{\maketitle}{%
+  \begin{center}
+  \vspace*{22.5pt}
+  {\huge\sffamily\textbf{\thetitle}}\\
+  \vspace*{17.5pt}
+  \ifx\theauthor\undefined
+  \else
+    {\Large\theauthor}\par
+  \fi
+  \ifx\myuserid\undefined
+  \else
+    {\Large Aops Username: \myuserid}\par
+  \fi
+  \ifx\mycountry\undefined
+  \else
+    {\Large Country: \mycountry}\par
+  \fi
+  \ifx\thedate\undefined
+  \else
+    \par\large\thedate\par
+  \fi
+  \vspace*{17.5pt}
+  \end{center}
+}
+
+
+%--------------------------x--------------------------%
+
+
+
+
+
+
+
+%--------------------------colors------------------------
+\usepackage[svgnames,dvipsnames,table]{xcolor}
+%-----------------------------x--------------------------
+
+
+
+
+
+
+% -----------------------Links-------------------------
+\usepackage[colorlinks=true,pdfusetitle]{hyperref}
+% \usepackage{hyperref}
+% \hypersetup{pdfkeywords={evan.sty},pdfsubject={web.evanchen.cc}}
+\hypersetup{urlcolor=RoyalPurple,linkcolor=RoyalBlue,citecolor=ForestGreen}
+%-------------------------x----------------------------
+
+
+
+
+
+
+
+
+
+%--------------------Foot Notes--------------------% 
+\usepackage{footnote}
+\usepackage{etoolbox}
+\BeforeBeginEnvironment{tcolorbox}{\savenotes}
+\AfterEndEnvironment{tcolorbox}{\spewnotes}
+%------------------------x-------------------------% 
+
+
+
+
+
+
+
+
+
+
+
+
+
+% ------------------- MATHS ---------------------- %
+\usepackage{amsmath,amssymb}
+
+% Inequalities
+\newcommand{\cycsum}{\sum_{\mathrm{cyc}}}
+\newcommand{\symsum}{\sum_{\mathrm{sym}}}
+\newcommand{\cycprod}{\prod_{\mathrm{cyc}}}
+\newcommand{\symprod}{\prod_{\mathrm{sym}}}
+\newcommand{\p}[1]{\left( #1 \right)}
+
+
+% FUnctional Inequalities
+\newcommand{\CC}{\mathbb C}
+\newcommand{\FF}{\mathbb F}
+\newcommand{\NN}{\mathbb N}
+\newcommand{\QQ}{\mathbb Q}
+\newcommand{\RR}{\mathbb R}
+\newcommand{\ZZ}{\mathbb Z}
+
+
+
+%From Kiran Kedlaya's "Geometry Unbound"
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
+\newcommand{\dang}{\measuredangle} %% Directed angle
+\newcommand{\ray}[1]{\overrightarrow{#1}}
+\newcommand{\seg}[1]{\overline{#1}}
+
+
+
+%From M275 "Topology" at SJSU
+\DeclareMathOperator{\id}{id}
+\newcommand{\taking}[1]{\xrightarrow{#1}}
+\newcommand{\inv}{^{-1}}
+
+
+
+
+
+% \newcommand{\defeq}{\overset{\mathrm{def}}{=}} I won't use it
+
+\newcommand{\ts}{\textsuperscript}
+\newcommand{\dg}{^\circ}
+\newcommand{\ii}{\item}
+
+
+
+
+\newcommand{\liff}{\leftrightarrow}
+\newcommand{\lthen}{\rightarrow}
+
+
+% Geometry Tools
+\newcommand{\pow}[2]{
+	\text{Pow}_{#1}(#2)
+}
+%--------------------------x----------------------------%
+
+
+
+
+
+
+
+
+
+%------------------------lists-----------------------%
+\usepackage{enumerate}
+%--------------------------x-------------------------%
+
+
+
+
+
+
+
+
+
+%--------------------Basic Editing------------------%
+\newcommand{\enquote}[1]{``#1''}
+\newcommand{\nth}[1]{\text{$#1$th}}
+\newcommand{\key}[1]{\textbf{\sffamily\color{SteelBlue!75!black}{#1}}}
+% Useful to create commands and environments with optional arguments
+\usepackage{xparse}
+%-------------------------x-------------------------%
+
+
+
+
+
+%-------------------Fancy Boxes--------------------%
+\usepackage{amsthm,thmtools}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,theorems,listings,breakable}
+
+\tcbset{
+	enhanced jigsaw,
+	boxrule=0pt,
+	leftrule=4pt,
+	arc=6pt,
+	left=9pt,
+	after skip=15pt,
+	before skip=15pt
+}
+
+\renewtcblisting{lstlisting}{
+	title=\sffamily\bfseries Source Code,
+	boxrule=2pt,
+	listing only,
+	left=7mm,
+	top=0pt,
+	breakable,
+	listing options={basicstyle=\ttfamily,columns=flexible,numbers=left,numberstyle=\sffamily}
+	% numbers=left,numberstyle=\sffamily\color{gray},
+	% }
+}
+
+
+\declaretheoremstyle[
+	headfont=\sffamily\bfseries\color{MidnightBlue},
+	headpunct={\\[3pt]},
+	postheadspace=0pt
+]{thmbluebox}
+\declaretheoremstyle[
+	headfont=\bfseries\color{RawSienna},
+	headpunct={\\[3pt]}
+]{thmorangebox}
+\declaretheoremstyle[
+	headfont=\sffamily\bfseries\color{Teal!80!black},
+	headpunct={.}
+]{thmtealbox}
+\declaretheoremstyle[
+	headfont=\bfseries,
+	headpunct={.}
+]{thmblackbox}
+\declaretheoremstyle[
+	headfont=\sffamily\bfseries\color{SteelBlue},
+	headpunct={\\[3pt]},
+]{thmsteelbox}
+\declaretheoremstyle[
+	headfont=\sffamily\bfseries\color{RoyalPurple},
+	headpunct={\\[3pt]}
+]{thmredbox}
+
+
+
+\newcommand{\tcbbluetheorem}[3]{
+	\theoremstyle{thmbluebox}
+	\newtheorem{#1}{#2}[#3]
+	\newtheorem*{#1*}{#2}
+	\tcolorboxenvironment{#1}{
+		colback=CornflowerBlue!5,colframe=RoyalBlue
+	}
+	\tcolorboxenvironment{#1*}{
+		colback=CornflowerBlue!5,colframe=RoyalBlue
+	}
+}
+
+\newcommand{\tcbtealtheorem}[3]{
+	\theoremstyle{thmtealbox}
+	\newtheorem{#1}{#2}[#3]
+	\newtheorem*{#1*}{#2}
+	\tcolorboxenvironment{#1}{
+		colback=Teal!5,colframe=Teal,left=5pt,
+	}
+	\tcolorboxenvironment{#1*}{
+		colback=Teal!5,colframe=Teal,left=5pt
+	}
+}
+
+\newcommand{\tcborangetheorem}[3]{
+	\theoremstyle{thmorangebox}
+	\newtheorem{#1}{#2}[#3]
+	\newtheorem*{#1*}{#2}
+	\tcolorboxenvironment{#1}{
+		colback=Salmon!5,colframe=RawSienna,
+		boxrule=1pt,
+	}
+	\tcolorboxenvironment{#1*}{
+		colback=Salmon!5,colframe=RawSienna,
+		boxrule=1pt,
+	}
+}
+
+\newcommand{\tcbblacktheorem}[3]{
+	\theoremstyle{thmblackbox}
+	\newtheorem{#1}{#2}[#3]
+	\newtheorem*{#1*}{#2}
+	\tcolorboxenvironment{#1}{
+		colback=RedViolet!5!gray!5,
+		colframe=black
+	}
+	\tcolorboxenvironment{#1*}{
+		colback=RedViolet!5!gray!5,
+		colframe=black
+	}
+}
+
+\newcommand{\tcbsteeltheorem}[3]{
+	\theoremstyle{thmsteelbox}
+	\newtheorem{#1}{#2}[#3]
+	\newtheorem*{#1*}{#2}
+	\tcolorboxenvironment{#1}{
+		colback=SteelBlue!5,
+		colframe=SteelBlue,
+		boxrule=2pt,
+	}
+	\tcolorboxenvironment{#1*}{
+		colback=WildStrawberry!5,
+		colframe=WildStrawberry
+	}
+}
+
+
+
+% \tcbbluetheorem{theorem}{Theorem}{section}
+% \tcbbluetheorem{lemma}{Lemma}{section}
+% \tcborangetheorem{example}{Example}{section}
+% \tcbblacktheorem{remark}{Remark}{section}
+% \tcbsteeltheorem{problem}{Problem}{section}
+% \tcbtealtheorem{intuition}{Intuition}{chapter}
+% \declaretheoremstyle[
+% 	headfont=\color{Teal!85!black}\bfseries,
+% 	bodyfont=\itshape,
+% 	% skipabove=80pt,
+% ]{definition}
+% \theoremstyle{definition}
+% \newtheorem{definition}{Definition}[section]
+% \declaretheoremstyle[
+% headfont=\color{RoyalBlue!85!black}\bfseries\sffamily
+% ]{solution}
+% \theoremstyle{solution}
+% \newtheorem{solution}{Solution}[section]
+% \newtheorem*{solution*}{Solution}
+%------------------------x-------------------------%
+
+
+
+
+%-----------------------Appendix-------------------------%
+% \usepackage{appendix}
+% \usepackage{environ}
+% source: https://tex.stackexchange.com/questions/372172/command-to-add-to-the-appendix
+% \newtoks\appendixtabletoks
+%
+% \NewEnviron{appendixtable}{%
+%   \edef\temp{%
+%     \noexpand\begin{table}[hp]
+%     \unexpanded\expandafter{\BODY}
+%     \noexpand\end{table}
+%   }%
+%   \global\appendixtabletoks=\expandafter{%
+%     \the\expandafter\appendixtabletoks\temp
+%   }
+% }
+% Source Ends
+%----------------------------x---------------------------%
+
+
+
+\usepackage{geodiagram}
